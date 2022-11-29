@@ -16,11 +16,12 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "app-shared/*": ["./packages/shared/src/*"],
+      "@altinn/recipe-editor/*": ["./packages/recipe-editor/src/*"],
       "@altinn/schema-editor/*": ["./packages/schema-editor/src/*"],
-      "@altinn/schema-model": ["./packages/schema-model/src/*"],
+      "@altinn/schema-model/*": ["./packages/schema-model/src/*"],
       "@altinn/text-editor": ["./packages/schema-model/src/*"],
-      "@altinn/ux-editor": ["./packages/ux-editor/src/*"]
+      "@altinn/ux-editor/*": ["./packages/ux-editor/src/*"],
+      "app-shared/*": ["./packages/shared/src/*"]
     }
   },
   "files": ["./declaration.d.ts"],

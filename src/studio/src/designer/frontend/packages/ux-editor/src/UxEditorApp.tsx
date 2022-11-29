@@ -7,7 +7,7 @@ import './styles/index.css';
 
 let initializedSagas = false;
 
-export const SubApp = () => {
+export const UxEditorApp = () => {
   if (!initializedSagas) {
     run();
     initializedSagas = true;

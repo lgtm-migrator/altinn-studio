@@ -1,4 +1,5 @@
-import { SubApp } from '../../packages/ux-editor/src/SubApp';
+import { UxEditorApp } from '@altinn/ux-editor/index';
+import { EditReceiptApp } from '@altinn/recipe-editor/index';
 import { AccessControlContainer } from '../features/accessControl/containers/AccessControlContainer';
 import { Administration } from '../features/administration/components/Administration';
 import { TextEditor } from '../features/textEditor';
@@ -38,7 +39,7 @@ const routes: IRoute[] = [
     activeSubHeaderSelection: TopBarMenu.Create,
     activeLeftMenuSelection: 'UI-Editor',
     menu: 'create',
-    subapp: SubApp,
+    subapp: UxEditorApp,
   },
   {
     path: '/:org/:app/texts',
@@ -126,6 +127,17 @@ const routes: IRoute[] = [
       urlKey: 'shared.wip_link_github_url',
       imageSource: '../../designer/img/illustration-help-circle.svg',
       shadow: true,
+    },
+  },
+  {
+    path: '/:org/:app/recipe-editor',
+    exact: true,
+    activeSubHeaderSelection: TopBarMenu.Create,
+    activeLeftMenuSelection: 'UI-Editor',
+    menu: 'create',
+    subapp: EditReceiptApp,
+    props: {
+      imageSource: 'what is this?',
     },
   },
   {

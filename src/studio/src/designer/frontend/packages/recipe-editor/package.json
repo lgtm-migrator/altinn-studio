@@ -1,0 +1,13 @@
+{
+  "name": "@altinn/recipe-editor",
+  "description": "Recipe page editor",
+  "version": "0.1.0",
+  "devDependencies": {
+    "jest": "29.3.1"
+  },
+  "private": true,
+  "scripts": {
+    "depcheck": "echo Checking $npm_package_name && npx depcheck && echo ",
+    "test": "jest --maxWorkers=50%"
+  }
+}

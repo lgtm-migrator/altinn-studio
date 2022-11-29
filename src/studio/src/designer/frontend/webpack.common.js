@@ -13,10 +13,11 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss', '.svg'],
     alias: {
-      'app-shared': path.resolve(__dirname, 'packages/shared/src'),
+      '@altinn/recipe-editor': path.resolve(__dirname, 'packages/recipe-editor/src'),
       '@altinn/schema-editor': path.resolve(__dirname, 'packages/schema-editor/src'),
       '@altinn/schema-model': path.resolve(__dirname, 'packages/schema-model/src'),
       '@altinn/ux-editor': path.resolve(__dirname, 'packages/ux-editor/src'),
+      'app-shared': path.resolve(__dirname, 'packages/shared/src'),
     },
     fallback: {
       'react/jsx-runtime': 'react/jsx-runtime.js',

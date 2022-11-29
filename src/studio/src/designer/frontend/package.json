@@ -83,11 +83,12 @@
     "app-development",
     "dashboard",
     "language",
-    "testing/mockend",
+    "packages/recipe-editor",
     "packages/schema-editor",
     "packages/schema-model",
     "packages/shared",
     "packages/text-editor",
-    "packages/ux-editor"
+    "packages/ux-editor",
+    "testing/mockend"
   ]
 }
