@@ -1,0 +1,47 @@
+{
+  "$id": "https://altinncdn.no/schemas/json/layout/receipt.schema.v1.json",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Receipt Page",
+  "description": "The schema defining the receipt page",
+  "layout": {
+    "title": "The layout",
+    "description": "Array of components to be presented in the layout.",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "id",
+          "pattern": "^[0-9a-zA-Z][0-9a-zA-Z-]*[0-9a-zA-Z]$",
+          "description": "The component ID. Must be unique within a given layout."
+        },
+        "type": {
+          "type": "string",
+          "title": "Type",
+          "description": "The component type.",
+          "enum": []
+        },
+        "required": {
+          "type": "boolean",
+          "title": "Required",
+          "description": "Boolean or expression indicating if the component is required when filling in the form. Defaults to false.",
+          "default": false
+        },
+        "readOnly": {
+          "type": "boolean",
+          "title": "Read only",
+          "description": "Boolean or expression indicating if the component should be presented as read only. Defaults to false.",
+          "default": false
+        },
+        "hidden": {
+          "type": "boolean",
+          "title": "Hidden",
+          "description": "Boolean value or expression indicating if the component should be hidden. Defaults to false.",
+          "default": false
+        }
+      }
+    },
+    "required": ["id", "type"]
+  }
+}

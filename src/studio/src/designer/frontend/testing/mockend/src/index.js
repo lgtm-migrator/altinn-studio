@@ -8,17 +8,18 @@ const {
   DASHBOARD_BASENAME,
 } = require('../../../packages/shared/src/constants');
 const {
+  createDatamodelPath,
   datamodelGetPath,
   datamodelPath,
-  userCurrentPath,
   datamodelsPath,
-  createDatamodelPath,
+  frontendLangPath,
+  receiptPath,
   remainingSessionTimePath,
   repoInitialCommitPath,
-  frontendLangPath,
   repoMetaPath,
   serviceConfigPath,
   serviceNamePath,
+  userCurrentPath,
 } = require('../../../packages/shared/src/api-paths');
 
 module.exports = (middlewares, devServer) => {
@@ -43,6 +44,7 @@ module.exports = (middlewares, devServer) => {
   //prettier-ignore
   app.get(frontendLangPath(':locale'), (req, res) => res.json(require(`../../../language/src/${req.params.locale}.json`)));
   app.get(remainingSessionTimePath(), (req, res) => res.send('9999'));
+  app.get(receiptPath(':ovner', ':repo'), require('./routes/receipt-get'));
   app.get(repoInitialCommitPath(':owner', ':repo'), (req, res) => res.sendStatus(204));
   app.get(repoMetaPath(':owner', ':repo'), require('./routes/get-repo-data'));
   app.get(serviceConfigPath(':owner', ':repo'), (req, res) => res.sendStatus(204));

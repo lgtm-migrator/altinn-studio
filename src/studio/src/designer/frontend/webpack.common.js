@@ -13,7 +13,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss', '.svg'],
     alias: {
-      '@altinn/recipe-editor': path.resolve(__dirname, 'packages/recipe-editor/src'),
+      '@altinn/receipt-editor': path.resolve(__dirname, 'packages/receipt-editor/src'),
       '@altinn/schema-editor': path.resolve(__dirname, 'packages/schema-editor/src'),
       '@altinn/schema-model': path.resolve(__dirname, 'packages/schema-model/src'),
       '@altinn/ux-editor': path.resolve(__dirname, 'packages/ux-editor/src'),

@@ -16,7 +16,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@altinn/recipe-editor/*": ["./packages/recipe-editor/src/*"],
+      "@altinn/receipt-editor/*": ["./packages/receipt-editor/src/*"],
       "@altinn/schema-editor/*": ["./packages/schema-editor/src/*"],
       "@altinn/schema-model/*": ["./packages/schema-model/src/*"],
       "@altinn/text-editor": ["./packages/schema-model/src/*"],

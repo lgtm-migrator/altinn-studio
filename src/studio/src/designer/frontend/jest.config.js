@@ -32,7 +32,7 @@ const config = {
     '\\.(css|less)$': path.join(__dirname, 'testing/mocks/styleMock.js'),
     // prettier-ignore
     '\\.(jpg|jpeg|png|gif|eot|otf|svg|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': path.join(__dirname, 'testing/mocks/fileMock.js'),
-    '^@altinn/recipe-editor/(.*)': path.join(__dirname, 'packages/recipe-editor/src/$1'),
+    '^@altinn/receipt-editor/(.*)': path.join(__dirname, 'packages/receipt-editor/src/$1'),
     '^@altinn/schema-editor/(.*)': path.join(__dirname, 'packages/schema-editor/src/$1'),
     '^@altinn/schema-model/(.*)': path.join(__dirname, 'packages/schema-model/src/$1'),
     '^@altinn/ux-editor/(.*)': path.join(__dirname, 'packages/ux-editor/src/$1'),
