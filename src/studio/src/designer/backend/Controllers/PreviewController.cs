@@ -1,5 +1,8 @@
+using System.Threading.Tasks;
 using Altinn.Platform.Storage.Interface.Models;
 using Altinn.Studio.Designer.Helpers;
+using Altinn.Studio.Designer.Infrastructure.GitRepository;
+using Altinn.Studio.Designer.RepositoryClient.Model;
 using Altinn.Studio.Designer.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +36,7 @@ namespace Altinn.Studio.Designer.Controllers
             _altinnGitRepositoryFactory = altinnGitRepositoryFactory;
         }
 
-         /// <summary>
+        /// <summary>
         /// The index action which will show the React form builder
         /// </summary>
         /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
@@ -46,7 +49,7 @@ namespace Altinn.Studio.Designer.Controllers
             return View();
         }
 
-         /// <summary>
+        /// <summary>
         /// The index action which will show the React form builder
         /// </summary>
         /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
@@ -62,7 +65,7 @@ namespace Altinn.Studio.Designer.Controllers
             return Ok(applicationMetadata);
         }
 
-         /// <summary>
+        /// <summary>
         /// The index action which will show the React form builder
         /// </summary>
         /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
@@ -75,7 +78,7 @@ namespace Altinn.Studio.Designer.Controllers
             return Ok();
         }
 
-         /// <summary>
+        /// <summary>
         /// The index action which will show the React form builder
         /// </summary>
         /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
@@ -87,5 +90,86 @@ namespace Altinn.Studio.Designer.Controllers
         {
             return Ok();
         }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("api/authentication/keepAlive")]
+        [HttpGet]
+        public IActionResult KeepAlive(string org, string app)
+        {
+            return Ok();
+        }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("api/v1/profile/user")]
+        [HttpGet]
+        public IActionResult CurrentUser(string org, string app)
+        {
+            string user = @"{
+                ""UserId"": 1001,
+                ""UserName"": ""PengelensPartner"",
+                ""PhoneNumber"": ""12345678"",
+                ""Email"": ""test@test.com"",
+                ""PartyId"": 500000,
+                ""Party"": {
+
+                },
+                ""UserType"": 0,
+                ""ProfileSettingPreference"": {
+                    ""Language"": ""nb""
+                }
+            }";
+
+            return Ok(user);
+        }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("api/authorization/parties/current")]
+        [HttpGet]
+        public IActionResult CurrentParty(string org, string app)
+        {
+            string party = @"{
+            ""partyId"": ""500000"",
+            ""partyTypeName"": 2,
+            ""orgNumber"": ""897069650"",
+            ""ssn"": null,
+            ""unitType"": ""AS"",
+            ""name"": ""DDG Fitness"",
+            ""isDeleted"": false,
+            ""onlyHierarchyElementWithNoAccess"": false,
+            ""person"": null,
+            ""organisation"": null,
+            ""childParties"": null
+        }";
+            return Ok(party);
+        }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("api/v1/parties/validateInstantiation")]
+        [HttpGet]
+        public IActionResult ValidateInstantiation(string org, string app)
+        {
+            return Ok();
+        }
+
     }
 }
