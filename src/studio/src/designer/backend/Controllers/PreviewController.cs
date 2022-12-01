@@ -116,17 +116,17 @@ namespace Altinn.Studio.Designer.Controllers
         public IActionResult CurrentUser(string org, string app)
         {
             string user = @"{
-                ""UserId"": 1001,
-                ""UserName"": ""PengelensPartner"",
-                ""PhoneNumber"": ""12345678"",
-                ""Email"": ""test@test.com"",
-                ""PartyId"": 500000,
-                ""Party"": {
+                ""userId"": 1001,
+                ""userName"": ""PengelensPartner"",
+                ""phoneNumber"": ""12345678"",
+                ""email"": ""test@test.com"",
+                ""partyId"": 500000,
+                ""party"": {
 
                 },
-                ""UserType"": 0,
-                ""ProfileSettingPreference"": {
-                    ""Language"": ""nb""
+                ""userType"": 0,
+                ""profileSettingPreference"": {
+                    ""language"": ""nb""
                 }
             }";
 
