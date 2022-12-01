@@ -59,9 +59,10 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult ApplicationMetadata(string org, string app)
         {
-            var developer = AuthenticationHelper.GetDeveloperUserName(HttpContext);
-            var altinnAppGitRepository = _altinnGitRepositoryFactory.GetAltinnAppGitRepository(org, app, developer);
-            var applicationMetadata = altinnAppGitRepository.GetApplicationMetadata();
+            // var developer = AuthenticationHelper.GetDeveloperUserName(HttpContext);
+            // var altinnAppGitRepository = _altinnGitRepositoryFactory.GetAltinnAppGitRepository(org, app, developer);
+
+            var applicationMetadata = _repository.GetApplication(org, app);
             return Ok(applicationMetadata);
         }
 
