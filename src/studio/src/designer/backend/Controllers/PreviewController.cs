@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Altinn.Platform.Storage.Interface.Models;
 using Altinn.Studio.Designer.Helpers;
@@ -89,7 +90,15 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult LayoutSets(string org, string app)
         {
-            return Ok();
+            var layoutsets = @"{
+                ""sets"": [
+      {
+        ""id"": ""stateless"",
+        ""dataType"": ""joda""
+      }
+    ]
+                }";
+            return Ok(layoutsets);
         }
 
         /// <summary>
@@ -166,11 +175,36 @@ namespace Altinn.Studio.Designer.Controllers
         /// <param name="app">Application identifier which is unique within an organisation.</param>
         /// <returns>A view with the React form builder</returns>
         [Route("api/v1/parties/validateInstantiation")]
-        [HttpGet]
+        [HttpPost]
         public IActionResult ValidateInstantiation(string org, string app)
         {
             return Ok();
         }
 
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("api/v1/texts/nb")]
+        [HttpGet]
+        public IActionResult Language(string org, string app)
+        {
+            return Ok(new Dictionary<string, string>());
+        }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("api/textresources")]
+        [HttpGet]
+        public IActionResult TextResources(string org, string app)
+        {
+            return Ok(new Dictionary<string, string>());
+        }
     }
 }
