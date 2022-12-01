@@ -1,14 +1,12 @@
 import React from 'react';
 import { EditReceiptContext } from './contexts/EditRecipeContext';
 import { ReceiptEditor } from './components/ReceiptEditor';
+import { EditorLayout } from './components/EditorLayout';
 
 export const EditReceiptApp = () => {
   return (
     <EditReceiptContext>
-      <div>
-        <h1>EditReceiptContainer</h1>
-        <ReceiptEditor />
-      </div>
+      <EditorLayout left={<ReceiptEditor />} center={<ReceiptEditor />} right={<ReceiptEditor />} />
     </EditReceiptContext>
   );
 };

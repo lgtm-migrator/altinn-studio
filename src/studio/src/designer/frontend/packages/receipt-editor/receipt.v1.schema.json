@@ -1,47 +1,67 @@
 {
   "$id": "https://altinncdn.no/schemas/json/layout/receipt.schema.v1.json",
-  "$schema": "https://json-schema.org/draft-07/schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Receipt Page",
-  "description": "The schema defining the receipt page",
-  "layout": {
-    "title": "The layout",
-    "description": "Array of components to be presented in the layout.",
-    "type": "array",
-    "items": {
-      "type": "object",
+  "description": "The schema defining the receipt page content",
+  "type": "object",
+  "properties": {
+    "heading": {
+      "type": "string",
+      "default": "Kvittering",
+      "examples": ["Kvittering"]
+    },
+    "subheading": {
+      "type": "string",
+      "examples": ["Skattemeldingen 2021 er sendt inn", "Elevundersøkelsen er sendt inn"]
+    },
+    "summaryTable": {
+      "type": "array",
+      "title": "The summary data",
+      "description": "A summary table showing instance data.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "labelTextResourceBinding": {
+            "type": "string",
+            "title": "The text resource binding for the label of the element showed in the table"
+          },
+          "valueDataModelBinding": {
+            "type": "string",
+            "title": "Data model bindings for a "
+          }
+        }
+      },
+      "default": [
+        {
+          "labelTextResourceBinding": "receipt.date_sent",
+          "valueDataModelBinding": "instancemetadata.date_sent"
+        },
+        {
+          "labelTextResourceBinding": "receipt.sender",
+          "valueDataModelBinding": "instancemetadata.sender"
+        },
+        {
+          "labelTextResourceBinding": "receipt.receiver",
+          "valueDataModelBinding": "instancemetadata.receiver"
+        },
+        {
+          "labelTextResourceBinding": "receipt.ref_num",
+          "valueDataModelBinding": "instancemetadata.ref_num"
+        }
+      ]
+    },
+
+    "attachmentTable": {
       "properties": {
-        "id": {
-          "type": "string",
-          "title": "id",
-          "pattern": "^[0-9a-zA-Z][0-9a-zA-Z-]*[0-9a-zA-Z]$",
-          "description": "The component ID. Must be unique within a given layout."
+        "collapsibleTitle": {
+          "type": "string"
         },
-        "type": {
-          "type": "string",
-          "title": "Type",
-          "description": "The component type.",
-          "enum": []
-        },
-        "required": {
+        "hideCollapsibleCount": {
           "type": "boolean",
-          "title": "Required",
-          "description": "Boolean or expression indicating if the component is required when filling in the form. Defaults to false.",
-          "default": false
-        },
-        "readOnly": {
-          "type": "boolean",
-          "title": "Read only",
-          "description": "Boolean or expression indicating if the component should be presented as read only. Defaults to false.",
-          "default": false
-        },
-        "hidden": {
-          "type": "boolean",
-          "title": "Hidden",
-          "description": "Boolean value or expression indicating if the component should be hidden. Defaults to false.",
           "default": false
         }
       }
-    },
-    "required": ["id", "type"]
-  }
+    }
+  },
+  "required": ["heading", "type"]
 }
