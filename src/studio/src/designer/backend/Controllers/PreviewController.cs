@@ -184,7 +184,8 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult Language(string org, string app)
         {
-            return Ok(new Dictionary<string, string>());
+            var resources = _repository.GetFileByRelativePath(org, app, "App/config/texts/resource.nb.json");
+            return Content(resources);
         }
 
         /// <summary>
