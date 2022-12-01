@@ -313,14 +313,14 @@ void Configure(IConfiguration configuration)
             pattern: "dashboard/{*AllValues}",
             defaults: new { controller = "Home", action = "Index" });
 
-        endpoints.MapControllerRoute(
-            name: "previewRoute",
-            pattern: "{org}/{app}",
-            defaults: new { controller = "Preview", action = "Index" },
-            constraints: new
-            {
-                app = "^[a-z]+[a-zA-Z0-9-]+[a-zA-Z0-9]$",
-            });
+        // endpoints.MapControllerRoute(
+        //     name: "previewRoute",
+        //     pattern: "{org}/{app}",
+        //     defaults: new { controller = "Preview", action = "Index" },
+        //     constraints: new
+        //     {
+        //         app = "^[a-z]+[a-zA-Z0-9-]+[a-zA-Z0-9]$",
+        //     });
 
         // ------------------------- DEV ----------------------------- //
         endpoints.MapControllerRoute(
