@@ -171,7 +171,7 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpPost]
         public IActionResult ValidateInstantiation(string org, string app)
         {
-            return Ok();
+            return Content(@"{""valid"": true}");
         }
 
         /// <summary>
