@@ -90,7 +90,7 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult LayoutSets(string org, string app)
         {
-            var layoutsets = _repository.GetFileByRelativePath(org, app, "App/ui/layout-sets.json");
+            var layoutsets = _repository.GetFileByRelativePath(org, app, "/App/ui/layout-sets.json");
             return Content(layoutsets);
         }
 
@@ -184,7 +184,7 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult Language(string org, string app)
         {
-            var resources = _repository.GetFileByRelativePath(org, app, "App/config/texts/resource.nb.json");
+            var resources = _repository.GetFileByRelativePath(org, app, "/App/config/texts/resource.nb.json");
             return Content(resources);
         }
 
