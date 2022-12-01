@@ -100,6 +100,34 @@ namespace Altinn.Studio.Designer.Controllers
         /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
         /// <param name="app">Application identifier which is unique within an organisation.</param>
         /// <returns>A view with the React form builder</returns>
+        [Route("api/jsonschema/bestilling")]
+        [HttpGet]
+        public IActionResult JsonSchema(string org, string app)
+        {
+            var layoutsets = _repository.GetFileByRelativePath(org, app, "/App/models/bestilling.schema.json");
+            return Content(layoutsets);
+        }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("v1/data/anonymous")]
+        [HttpGet]
+        public IActionResult DataModel(string org, string app)
+        {
+            string user = @"{}";
+            return Content(user);
+        }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
         [Route("api/authentication/keepAlive")]
         [HttpGet]
         public IActionResult KeepAlive(string org, string app)
