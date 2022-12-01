@@ -90,15 +90,8 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult LayoutSets(string org, string app)
         {
-            var layoutsets = @"{
-                ""sets"": [
-      {
-        ""id"": ""stateless"",
-        ""dataType"": ""joda""
-      }
-    ]
-                }";
-            return Ok(layoutsets);
+            var layoutsets = _repository.GetFileByRelativePath(org, app, "App/ui/layout-sets.json");
+            return Content(layoutsets);
         }
 
         /// <summary>
@@ -204,7 +197,8 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult TextResources(string org, string app)
         {
-            return Ok(new Dictionary<string, string>());
+            var resources = _repository.GetFileByRelativePath(org, app, "App/config/texts/resource.nb.json");
+            return Content(resources);
         }
     }
 }
