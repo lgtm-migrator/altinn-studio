@@ -24,8 +24,9 @@ namespace Altinn.Studio.Designer.Infrastructure
             services.Configure<KeyVaultSettings>(configuration.GetSection("kvSetting"));
             services.Configure<CertificateSettings>(configuration.GetSection("CertificateSettings"));
             services.Configure<PlatformSettings>(configuration.GetSection("PlatformSettings"));
-            services.Configure<AzureDevOpsSettings>(configuration.GetSection("Integrations:AzureDevOpsSettings"));  
+            services.Configure<AzureDevOpsSettings>(configuration.GetSection("Integrations:AzureDevOpsSettings"));
             services.Configure<PostgreSQLSettings>(configuration.GetSection("PostgreSQLSettings"));
+            services.Configure<PreviewServiceConfiguration>(configuration.GetSection(nameof(PreviewServiceConfiguration)));
             return services;
         }
     }
