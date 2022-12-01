@@ -44,6 +44,8 @@ margin: 0;
 <script>
   const app = document.getElementById('app').contentWindow;
   app.isPreview = true;
+  app.org = '@ViewBag.Org';
+  app.app = '@ViewBag.App';
 
   const standardResponses = {
     'api/v1/applicationmetadata':
