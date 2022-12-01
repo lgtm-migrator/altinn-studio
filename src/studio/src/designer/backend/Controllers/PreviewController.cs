@@ -11,7 +11,7 @@ namespace Altinn.Studio.Designer.Controllers
     /// </summary>
     [Authorize]
     [AutoValidateAntiforgeryToken]
-    [Route("{org}/{app}")]
+    [Route("preview/{org}/{app}")]
     public class PreviewController : Controller
     {
         private readonly IRepository _repository;
