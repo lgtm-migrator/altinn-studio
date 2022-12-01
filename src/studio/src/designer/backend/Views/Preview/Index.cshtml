@@ -5,7 +5,12 @@ margin: 0;
 }
 </style>
 <div style="display: flex; flex-direction: column; height: 100vh;">
-<div style="padding: 10px">Heeeere's Altinn Studio!</div>
+<div style="padding: 10px">
+  Heeeere's Altinn Studio!
+  <button id="simulation">
+    Simulate adding a new component
+  </button>
+</div>
 <iframe id="app" src="/designer/html/app.html" style="width: 100%; height: 100%;"></iframe>
 <script>
   const app = document.getElementById('app').contentWindow;
@@ -28,6 +33,24 @@ margin: 0;
       console.log('Got request from app we cannot reply to', data);
     }
   });
-</script>
 
+  let componentCounter = 0;
+
+  document.getElementById('simulation').addEventListener('click', () => {
+    app.postMessage({
+      type: 'add-new-component',
+      component: {
+        id: 'my-component'+ componentCounter,
+        type: 'Input',
+        textResourceBinding: {
+          title: 'Demokomponent '+ componentCounter
+        },
+        dataModelBindings: {},
+        required: true,
+        readOnly: false,
+      }
+    });
+    componentCounter++;
+  });
+</script>
 </div>
