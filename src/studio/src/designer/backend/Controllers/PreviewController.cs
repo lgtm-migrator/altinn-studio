@@ -1,4 +1,5 @@
 using Altinn.Platform.Storage.Interface.Models;
+using Altinn.Studio.Designer.Helpers;
 using Altinn.Studio.Designer.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,21 +12,26 @@ namespace Altinn.Studio.Designer.Controllers
     [Authorize]
     [AutoValidateAntiforgeryToken]
 
-    // [Route("{org}/{app}")]
+    [Route("{org}/{app}")]
     public class PreviewController : Controller
     {
         private readonly IRepository _repository;
         private readonly ISchemaModelService _schemaModelService;
+        private readonly IAltinnGitRepositoryFactory _altinnGitRepositoryFactory;
 
          /// <summary>
         /// Initializes a new instance of the <see cref="PreviewController"/> class.
         /// </summary>
         /// <param name="repositoryService">The service repository service.</param>
         /// <param name="sourceControl">The source control service.</param>
+        /// <param name="altinnGitRepositoryFactory">
+        /// Factory class that knows how to create types of <see cref="AltinnGitRepository"/>
+        /// </param>
         public PreviewController(
-            IRepository repositoryService, ISourceControl sourceControl)
+            IRepository repositoryService, ISourceControl sourceControl, IAltinnGitRepositoryFactory altinnGitRepositoryFactory)
         {
             _repository = repositoryService;
+            _altinnGitRepositoryFactory = altinnGitRepositoryFactory;
         }
 
          /// <summary>
@@ -49,8 +55,10 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult ApplicationMetadata(string org, string app)
         {
-            Application application = _repository.GetApplication(org, app);
-            return Ok(application);
+            var developer = AuthenticationHelper.GetDeveloperUserName(HttpContext);
+            var altinnAppGitRepository = _altinnGitRepositoryFactory.GetAltinnAppGitRepository(org, app, developer);
+            var applicationMetadata = altinnAppGitRepository.GetApplicationMetadata();
+            return Ok(applicationMetadata);
         }
 
          /// <summary>
@@ -63,8 +71,7 @@ namespace Altinn.Studio.Designer.Controllers
         [HttpGet]
         public IActionResult ApplicationSettings(string org, string app)
         {
-            Application application = _repository.GetApplication(org, app);
-            return Ok(application);
+            return Ok();
         }
 
          /// <summary>
