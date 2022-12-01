@@ -11,7 +11,6 @@ namespace Altinn.Studio.Designer.Controllers
     /// </summary>
     [Authorize]
     [AutoValidateAntiforgeryToken]
-
     [Route("{org}/{app}")]
     public class PreviewController : Controller
     {
@@ -42,6 +41,8 @@ namespace Altinn.Studio.Designer.Controllers
         /// <returns>A view with the React form builder</returns>
         public IActionResult Index(string org, string app)
         {
+            ViewBag.Org = org;
+            ViewBag.App = app;
             return View();
         }
 

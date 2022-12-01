@@ -8,19 +8,6 @@
 
   <title>@ViewBag.Org- @ViewBag.App</title>
 
-  <link rel="icon" href="https://altinncdn.no/favicon.ico">
-
-  <!-- Third Party CSS -->
-  <link rel="stylesheet" href="https://altinncdn.no/toolkits/fortawesome/altinn-no-bold/0.1/css/embedded-woff.css">
-  <link rel="stylesheet" href="https://altinncdn.no/toolkits/fortawesome/altinn-no-regular/0.1/css/embedded-woff.css">
-  <link rel="stylesheet" href="https://altinncdn.no/toolkits/fortawesome/altinn-studio/0.1/css/embedded-woff.css">
-
-  <!-- Fonts -->
-  <link href="https://altinncdn.no/fonts/altinn-din/altinn-din.css" rel="stylesheet">
-
-  <!-- Runtime CSS -->
-  <link rel="stylesheet" type="text/css" href="http://localhost:8080/altinn-app-frontend.css">
-
   <style>
     html, body {
       height: 100%;
@@ -28,22 +15,6 @@
   </style>
 </head>
 <body>
-  <div class="flex-column d-flex media-body">
-
-    <script>
-      function loadScript() {
-        var appId = window.location.pathname.split('/');
-        window.reportee = document.cookie.replace(/(?:(?:^|.*;\s*)AltinnPartyId\s*\=\s*([^;]*).*$)|^.*$/, "$1");;
-        window.org = appId[1];
-        window.app = appId[2];
-      }
-
-    </script>
-    <div id="root" class="media-body flex-column d-flex"></div>
-    <script>
-      loadScript();
-    </script>
-  </div>
-  <script src="http://localhost:8080/altinn-app-frontend.js"></script>
+  <iframe id="app" src="/designer/html/app.html" style="width: 60%; height: 100%;"></iframe>
 </body>
 </html>
