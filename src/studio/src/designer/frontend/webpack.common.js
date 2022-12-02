@@ -9,7 +9,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist', process.env.npm_package_name),
     filename: `${process.env.npm_package_name}.js`,
   },
-
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.scss', '.svg'],
     alias: {
@@ -62,7 +61,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: `${process.env.npm_package_name}.css`,
     }),

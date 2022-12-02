@@ -20,6 +20,7 @@ const {
   serviceConfigPath,
   serviceNamePath,
 } = require('../../../packages/shared/src/api-paths');
+const devServerConfig = require('../config.json');
 
 module.exports = (middlewares, devServer) => {
   if (!devServer) {
@@ -29,10 +30,11 @@ module.exports = (middlewares, devServer) => {
   ensureStorageDir();
   app.use(bodyParser.json());
 
-  const startUrl =
-    process.env.npm_package_name === 'dashboard'
-      ? DASHBOARD_BASENAME
-      : `${APP_DEVELOPMENT_BASENAME}/someorg/someapp`;
+  const startUrl = {
+    dashboard: DASHBOARD_BASENAME,
+    'app-development': `${APP_DEVELOPMENT_BASENAME}/someorg/someapp`,
+    'app-preview': '/preview/someorg/someapp',
+  }[process.env.npm_package_name];
 
   app.delete(datamodelPath(':owner', ':repo'), require('./routes/del-datamodel'));
   app.get('/', (req, res) => res.redirect(startUrl));
@@ -52,5 +54,6 @@ module.exports = (middlewares, devServer) => {
   app.post(createDatamodelPath(':owner', ':repo'), require('./routes/create-model'));
   app.put(datamodelsPath(':owner', ':repo'), require('./routes/put-datamodel'));
 
+  app.get('/designer/api/:org/:app/preview-status', require('./routes/preview-get'));
   return middlewares;
 };

@@ -34,9 +34,11 @@ module.exports = {
     hot: true,
     allowedHosts: 'all',
     port:
-      process.env.npm_package_name === 'dashboard'
-        ? devServerConfig.DASHBOARD_PORT
-        : devServerConfig.APP_DEVELOPMENT_PORT,
+      {
+        dashboard: devServerConfig.DASHBOARD_PORT,
+        'app-development': devServerConfig.APP_DEVELOPMENT_PORT,
+        'app-preview': 2006,
+      }[process.env.npm_package_name] ?? 2009,
     historyApiFallback: true,
     client: {
       overlay: {
