@@ -229,5 +229,19 @@ namespace Altinn.Studio.Designer.Controllers
             var resources = _repository.GetFileByRelativePath(org, app, "App/config/texts/resource.nb.json");
             return Content(resources);
         }
+
+        /// <summary>
+        /// The index action which will show the React form builder
+        /// </summary>
+        /// <param name="org">Unique identifier of the organisation responsible for the app.</param>
+        /// <param name="app">Application identifier which is unique within an organisation.</param>
+        // <param name="modelname">Application identifier which is unique within an organisation.</param>
+        /// <returns>A view with the React form builder</returns>
+        [Route("api/jsonschema/{modelname}")]
+        public IActionResult Datamodel(string org, string app, string modelname)
+        {
+            var resources = _repository.GetFileByRelativePath(org, app, $"/App/models/{modelname}.schema.json");
+            return Content(resources);
+        }
     }
 }
