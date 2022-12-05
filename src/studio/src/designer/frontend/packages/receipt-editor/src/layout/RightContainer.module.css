@@ -1,0 +1,10 @@
+.tabs {
+}
+.tabs > div > div:first-child {
+  border-bottom: 1px solid gray;
+  margin: 0;
+  padding: 0 var(--tablist-margin_horizontal);
+}
+.tabs button {
+  margin-bottom: -2.5px;
+}

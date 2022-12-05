@@ -50,7 +50,10 @@
         }
       ]
     },
-
+    "bodytext": {
+      "type": "string",
+      "examples": ["Skattemeldingen 2021 er sendt inn", "Elevundersøkelsen er sendt inn"]
+    },
     "attachmentTable": {
       "properties": {
         "collapsibleTitle": {

@@ -1,9 +1,11 @@
 import React from 'react';
 import { EditReceiptContext } from './contexts/EditRecipeContext';
-import { ReceiptEditor } from './components/ReceiptEditor';
-import { EditorLayout } from './components/EditorLayout';
-import { LeftContainer } from './components/LeftContainer';
-import { RightContainer } from './components/RightContainer';
+
+import { EditorLayout } from './generic/EditorLayout';
+
+import { ReceiptEditor } from './layout/ReceiptEditor';
+import { LeftContainer } from './layout/LeftContainer';
+import { RightContainer } from './layout/RightContainer';
 
 export const EditReceiptApp = () => {
   return (

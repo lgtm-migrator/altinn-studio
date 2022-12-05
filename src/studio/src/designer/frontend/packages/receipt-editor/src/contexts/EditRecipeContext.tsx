@@ -5,6 +5,7 @@ import { receiptPath } from 'app-shared/api-paths';
 import axios from 'axios';
 interface EditReceiptContextProps {
   isReady: boolean;
+  setReceipt: (receipt: any) => void;
   receipt: any;
 }
 
@@ -20,7 +21,9 @@ export const EditReceiptContext = (props: any) => {
       .then((result) => setReceipt(result.data))
       .finally(() => setIsReady(true));
   }, [app, org]);
-  return <Context.Provider value={{ isReady, receipt }}>{props.children}</Context.Provider>;
+  return (
+    <Context.Provider value={{ isReady, receipt, setReceipt }}>{props.children}</Context.Provider>
+  );
 };
 
 export const useEditReceiptContext = () => useContext(Context);
