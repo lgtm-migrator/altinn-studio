@@ -63,7 +63,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: `${process.env.npm_package_name}.css`,
     }),
